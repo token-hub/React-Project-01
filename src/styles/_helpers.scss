@@ -1,0 +1,7 @@
+@function color($color-name) {
+	@return map-get($colors, $color-name);
+}
+
+@function border() {
+	@return 1px solid #6c273a
+}

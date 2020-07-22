@@ -1,5 +1,4 @@
 import React from 'react'
-import '../styles/calculator.css'
 
 class Calculator extends React.Component {
 
@@ -11,14 +10,13 @@ class Calculator extends React.Component {
 		}
 	}
 
-	changeHandler = event => {
-		this.setState({ num: event.target.value })
-	}
+	changeHandler = event => this.setState({ num: event.target.value })
+
+	numberClickHandler = event => this.setState({ num: event.target.value })
+	
+	clearHandler = () => this.setState({ num: 0 })
 
 	render() {
-
-
-
 		return (
 			<div className='calculator'>
 				<div className='container'>
@@ -29,7 +27,7 @@ class Calculator extends React.Component {
 
 						<div className='content'>
 							<div className="left second clear">
-								<button>Clear</button>
+								<button onClick={this.clearHandler} >Clear</button>
 							</div>
 							<div className="right second">
 								<div className="right-item">
@@ -43,13 +41,13 @@ class Calculator extends React.Component {
 
 						<div className='content'>
 							<div className="item">
-								<button> 7 </button>
+								<button value={7} onClick={this.numberClickHandler}> 7 </button>
 							</div>
 							<div className="item">
-								<button> 8 </button>
+								<button value={8} onClick={this.numberClickHandler}> 8 </button>
 							</div>
 							<div className="item">
-								<button> 9 </button>
+								<button value={9} onClick={this.numberClickHandler}> 9 </button>
 							</div>
 							<div className="item something-red">
 								<button className='something-red'> - </button>
@@ -58,13 +56,13 @@ class Calculator extends React.Component {
 
 						<div className='content'>
 							<div className="item">
-								<button> 4 </button>
+								<button value={4} onClick={this.numberClickHandler}> 4 </button>
 							</div>
 							<div className="item">
-								<button> 5 </button>
+								<button value={5} onClick={this.numberClickHandler}> 5 </button>
 							</div>
 							<div className="item">
-								<button> 6 </button>
+								<button value={6} onClick={this.numberClickHandler}> 6 </button>
 							</div>
 							<div className="item something-red">
 								<button className='something-red'> * </button>
@@ -73,13 +71,13 @@ class Calculator extends React.Component {
 
 						<div className='content'>
 							<div className="item">
-								<button> 1 </button>
+								<button value={1} onClick={this.numberClickHandler}> 1 </button>
 							</div>
 							<div className="item">
-								<button> 2 </button>
+								<button value={2} onClick={this.numberClickHandler}> 2 </button>
 							</div>
 							<div className="item">
-								<button> 3 </button>
+								<button value={3} onClick={this.numberClickHandler}> 3 </button>
 							</div>
 							<div className="item something-red">
 								<button className='something-red'> / </button>

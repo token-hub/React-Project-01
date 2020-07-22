@@ -1,0 +1,104 @@
+.calculator {
+	@include flexCenters();
+
+	height: 100vh;
+	width: 100%;
+
+	.container {
+		height: 400px;
+		width: 300px;
+		border: 1px solid #6c273a;
+
+		.top{
+			@include flexAlign();
+			
+			justify-content: flex-end;
+			height: 25%;
+			width: 100%;
+			background: color(input);
+
+			input {
+				height: 90%;
+				width: 100%;
+				background: transparent;
+				color: white;
+				padding-right: 15px;
+				margin: 0;
+				border: none;
+				text-align: right;
+				font-size: 3rem;
+			}
+
+			input:focus {
+			    outline: none;
+			}
+		}
+
+		.bottom {
+			display: flex; 
+			flex-direction: column;
+			height: 75%;
+			width: 100%;
+
+			.content {
+				height: 25%;
+				width: 100%;
+				border-top: border();
+				display: flex;
+
+				.second {
+					@include flexCenters();
+
+					height: 100%;
+					width: 50%;
+				}
+
+				.right {
+					.right-item {
+						@include flexCenters();
+						
+						border-left: border();
+						font-size: 3rem !important;
+						height: 100%;
+						width: 100%;
+					}
+				}
+
+				.item {
+					@include flexCenters();
+
+					border-left: border();
+					height: 100%;
+					width: 25%;
+
+					button {
+						font-size: 3rem !important;
+					}
+				}
+
+				.item:nth-child(1) {
+					border-left: none;
+				}
+			}
+		}
+	}
+}
+
+button {
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+	border: none;
+	font-size: 1.5rem;
+	padding: 0;
+	background: transparent;
+}
+
+
+// -------------------- [ UTILITIES ] --------------------
+
+.something-red {
+	background: #cd2d4f;
+	color: white;
+	font-size: 2rem !important;
+}
