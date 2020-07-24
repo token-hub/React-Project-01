@@ -16,18 +16,32 @@ class Calculator extends React.Component {
 	changeHandler = event => this.setState({ num: event.target.value});
 
 	numberAndOperatorClickHandler = event => {
-
+		let {num, errorMsg} = this.state;
 		let value = event.target.value;
+		let isNan = isNaN(value);
 
-		isNaN(parseInt(value))
-							 ?  this.state.num.includes(value) // check if value is present
-							 	? this.setState({ num: this.state.num }) 
-							 	: isNaN(parseInt(this.state.num[this.state.num.length-1])) // check if last character is an operator
-							 		? this.setState({ num: this.state.num.slice(0, -1)+value })
-							 		: this.setState({ num: this.state.num + event.target.value})
-							 :  this.state.num === 0 
-							 	? this.setState({ num: event.target.value })
-							 	: this.setState({ num: this.state.num + event.target.value  })
+		isNan 
+			? isNaN(num[num.length-1])
+				? this.setState({ num: num.slice(0, -1)+value }) 
+				: this.setState({ num: num + event.target.value }) 
+			: num === 0
+				? this.setState({ num: event.target.value })
+				: this.setState({ num: num + event.target.value  }) ;
+
+		/*
+		if !number
+	
+			if last value is operator
+				replace last operator with new one
+			else	
+				append value after current value
+			
+		else
+			if	check if value === 0
+			 	replace 0 with value
+			else
+				append value after current value
+		*/
 	}
 
 	equalsOperationHandler = () => {

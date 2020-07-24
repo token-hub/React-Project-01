@@ -102,3 +102,9 @@ button {
 	color: white;
 	font-size: 2rem !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
