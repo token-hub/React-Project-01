@@ -6,28 +6,44 @@ class Calculator extends React.Component {
 		super(props)
 	
 		this.state = {
-			 num: 0
+			 num: 0,
+			 errorMsg: ''
 		}
 	}
 
-	clearHandler = () => this.setState({ num: 0 })
+	clearHandler = () => this.setState({ num: 0, errorMsg: '' })
 
-	changeHandler = event => this.setState({ num: event.target.value })
+	changeHandler = event => this.setState({ num: event.target.value});
 
 	numberAndOperatorClickHandler = event => {
-		let result = this.state.num === 0 ? event.target.value : this.state.num + event.target.value ;
-		this.setState({ num: result })
+
+		let value = event.target.value;
+
+		isNaN(parseInt(value))
+							 ?  this.state.num.includes(value) // check if value is present
+							 	? this.setState({ num: this.state.num }) 
+							 	: isNaN(parseInt(this.state.num[this.state.num.length-1])) // check if last character is an operator
+							 		? this.setState({ num: this.state.num.slice(0, -1)+value })
+							 		: this.setState({ num: this.state.num + event.target.value})
+							 :  this.state.num === 0 
+							 	? this.setState({ num: event.target.value })
+							 	: this.setState({ num: this.state.num + event.target.value  })
 	}
 
 	equalsOperationHandler = () => {
-		// slice the last character
-		// check if its a number if not display error message
-		console.log('equals');
+		let lastChar = this.state.num[this.state.num.length-1];
+		let firstChar = this.state.num[0];
+		isNaN(parseInt(lastChar)) || isNaN(parseInt(firstChar)) ? this.setState({ errorMsg: 'Error' }) : this.setState({ errorMsg: 'Yahoooo!' })
 	}
 	
 	render() {
+
+		let {num, errorMsg} = this.state;
+
 		return (
+
 			<div className='calculator'>
+			<h1>{errorMsg}</h1>
 				<div className='container'>
 					<div className='top'>
 						<input type="text" value={this.state.num} onChange={this.changeHandler} />
@@ -95,6 +111,7 @@ class Calculator extends React.Component {
 					</div>
 				</div>
 			</div>
+
 		)
 	}
 }
