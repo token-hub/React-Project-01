@@ -6,7 +6,7 @@ class Calculator extends React.Component {
 		super(props)
 	
 		this.state = {
-			 num: 0,
+			 num: '0',
 			 errorMsg: ''
 		}
 	}
@@ -30,12 +30,10 @@ class Calculator extends React.Component {
 
 		/*
 		if !number
-	
 			if last value is operator
 				replace last operator with new one
 			else	
-				append value after current value
-			
+				append value after current value	
 		else
 			if	check if value === 0
 			 	replace 0 with value
@@ -47,7 +45,10 @@ class Calculator extends React.Component {
 	equalsOperationHandler = () => {
 		let lastChar = this.state.num[this.state.num.length-1];
 		let firstChar = this.state.num[0];
-		isNaN(parseInt(lastChar)) || isNaN(parseInt(firstChar)) ? this.setState({ errorMsg: 'Error' }) : this.setState({ errorMsg: 'Yahoooo!' })
+
+		isNaN(parseInt(lastChar)) || isNaN(parseInt(firstChar)) 
+			? this.setState({ errorMsg: 'Error' }) 
+			: this.setState({ num: eval(this.state.num).toString() })
 	}
 	
 	render() {
